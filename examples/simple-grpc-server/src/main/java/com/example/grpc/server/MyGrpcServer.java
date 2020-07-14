@@ -23,17 +23,18 @@ import com.example.grpc.HelloResponseOrBuilder;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-
+import io.grpc.netty.NettyServerBuilder;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 
 /**
  * Created by rayt on 5/16/16.
  */
 public class MyGrpcServer {
   static public void main(String [] args) throws IOException, InterruptedException {
-    Server server = ServerBuilder.forPort(8080)
-        .addService(new GreetingServiceImpl()).build();
-
+    InetSocketAddress address = new InetSocketAddress("[::1]", 8080);
+//    Server server = ServerBuilder.forPort(8080).addService(new GreetingServiceImpl()).build();
+    Server server = NettyServerBuilder.forAddress(address).addService(new GreetingServiceImpl()).directExecutor().build();
     System.out.println("Starting server...");
     server.start();
     System.out.println("Server started!");

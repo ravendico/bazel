@@ -24,5 +24,7 @@ java_binary(
         ":GreetingService_grpc",
         "//examples/simple-grpc-server:GreetingService",
         "//third_party/grpc:grpc-jar",
+       "//third_party:guava",
+       "//third_party:netty",
     ],
 )
