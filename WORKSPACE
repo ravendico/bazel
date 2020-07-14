@@ -932,13 +932,13 @@ register_toolchains("//src/main/res:empty_rc_toolchain")
 http_archive(
     name = "com_github_grpc_grpc",
     urls = [
-        "https://mirror.bazel.build/github.com/grpc/grpc/archive/v1.26.0.tar.gz",
-        "https://github.com/grpc/grpc/archive/v1.26.0.tar.gz",
+        # "https://mirror.bazel.build/github.com/grpc/grpc/archive/v1.26.0.tar.gz",
+        "https://github.com/grpc/grpc/archive/v1.26.x.tar.gz",
     ],
-    sha256 = "2fcb7f1ab160d6fd3aaade64520be3e5446fc4c6fa7ba6581afdc4e26094bd81",
+    sha256 = "121bdfec9bf6efee4a10d0c1b6ced097ac41a5db239b9dc596be1a2b462c138a",
     patches = ["//third_party/grpc:grpc_1.26.0.patch"],
     patch_args = ["-p1"],
-    strip_prefix = "grpc-1.26.0",
+    strip_prefix = "grpc-1.26.x",
 )
 
 # Projects using gRPC as an external dependency must call both grpc_deps() and
